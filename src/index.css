@@ -388,6 +388,9 @@ header .navegacion{
     font-size: var(--font-size-s);
 }
 /*diseño p-carrito*/
+.carrito-section{
+    background: var(--light-pink-color);
+}
 .carrito-page{
     padding: 140px 20px 80px;
     min-height: 100vh;
@@ -558,10 +561,134 @@ header .navegacion{
         transform: scale(1);
     }
 }
-
-
-
-
+/*diseño p-Nosotros*/
+.nosotros-section{
+    padding: 50px 20px 100px;
+    background: var(--light-pink-color);
+    min-height: 100vh;
+}
+.nosotros-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 180px;
+    margin-top: 50px;
+}
+.nosotros-img-container{
+    flex: 1;
+}
+.nosotros-img{
+    width: 100%;
+    border-radius: 25px;
+    object-fit: cover;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.nosotros-info{
+    flex: 1;
+}
+.nosotros-info h3{
+    font-size: var(--font-size-xxl);
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+.nosotros-info p{
+    margin-bottom: 20px;
+    line-height: 1.7;
+    color: var(--dark-color);
+    font-size: var(--font-size-m);
+}
+.mision-vision-container{
+    margin-top: 70px;
+    display: flex;
+    gap: 30px;
+}
+.mv-card{
+    flex: 1;
+    background: var(--white-color);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+}
+.mv-card:hover{
+    transform: translateY(-5px);
+}
+.mv-card h3{
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+    font-size: var(--font-size-xl);
+}
+.mv-card p{
+    line-height: 1.7;
+    color: var(--dark-color);
+}
+/*diseño p-Contacto*/
+.contacto-page{
+    padding: 50px 20px 100px;
+    background: var(--light-pink-color);
+    min-height: 100vh;
+}
+.contacto-container{
+    display: flex;
+    gap: 50px;
+    margin-top: 50px;
+    align-items: center;
+}
+.contacto-info{
+    flex: 1;
+}
+.contacto-info h3{
+    font-size: var(--font-size-xxl);
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+.contacto-info p{
+    margin-bottom: 30px;
+    line-height: 1.8;
+    color: var(--dark-color);
+}
+.info-item{
+    margin-bottom: 20px;
+    font-size: var(--font-size-m);
+    color: var(--primary-color);
+    font-weight: var(--font-weight-medium);
+}
+.contacto-form{
+    flex: 1;
+    background: var(--white-color);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.contacto-form input, .contacto-form textarea{
+    width: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid var(--medium-gray-color);
+    outline: none;
+    font-size: var(--font-size-m);
+}
+.contacto-form input:focus, .contacto-form textarea:focus{
+    border-color: var(--secondary-color);
+}
+.contacto-btn{
+    padding: 15px;
+    border: none;
+    border-radius: var(--border-radius-m);
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    font-size: var(--font-size-m);
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.contacto-btn:hover{
+    background: var(--primary-color);
+    color: var(--white-color);
+}
 
 
 
@@ -625,6 +752,15 @@ header .navegacion{
     .footer-content{
         grid-template-columns: repeat(2,1fr);
     }
+    .nosotros-container{
+        flex-direction: column;
+    }
+    .mision-vision-container{
+        flex-direction: column;
+    }
+    .contacto-container{
+        flex-direction: column;
+    }
 }
 @media screen and (max-width: 640px) {
     .hero-title{
@@ -675,6 +811,29 @@ header .navegacion{
     .input-group{
         flex-direction: column;
     }
+    .nosotros-section{
+        padding: 120px 15px 80px;
+    }
+    .nosotros-info h3{
+        font-size: var(--font-size-xl);
+        text-align: center;
+    }
+    .nosotros-info p{
+        text-align: center;
+    }
+    .contacto-page{
+        padding: 120px 15px 80px;
+    }
+    .contacto-info{
+        text-align: center;
+    }
+    .contacto-info h3{
+        font-size: var(--font-size-xl);
+    }
+    .contacto-form{
+        padding: 25px;
+    }
+
 }
 
 
