@@ -2,9 +2,13 @@ import { useContext, useState } from "react";
 import { CarritoContext } from "../context/CarritoContext";
 
 function Productos(){
-    const [filtroMarca,setFiltroMarca]=useState("Todos")
-    const [filtroCategoria, setFiltroCategoria]=useState("Todos")
-    const {agregarAlCarrito}=useContext(CarritoContext); 
+    const [filtroMarca,setFiltroMarca]=useState("Todos");
+    const [filtroCategoria, setFiltroCategoria]=useState("Todos");
+    const [busqueda, setBusqueda] = useState("");
+    const {agregarAlCarrito}=useContext(CarritoContext);
+
+
+
     const marcas=[
         "Todos",
         "Nike",
@@ -257,13 +261,20 @@ function Productos(){
                     }`
                     }
                 </h3>
+                {/*Buscador*/}
+                <div className="buscador-container">
+                    <input type="text" placeholder="Buscar..." className="buscador-input" value={busqueda} onChange={(e)=> setBusqueda(e.target.value)}/>
+                </div>
 
                 {/*productos*/}
                 <div className="productos-container">
                     {productos.filter((producto)=>{
                         const coincideMarca = filtroMarca==="Todos"||producto.marca===filtroMarca;
                         const coincideCategoria = filtroCategoria==="Todos"||producto.categoria===filtroCategoria;
-                        return coincideMarca && coincideCategoria;
+                        const coincideBusqueda = producto.nombre.toLowerCase().includes(busqueda.toLowerCase());
+
+
+                        return coincideMarca && coincideCategoria && coincideBusqueda;
                     })
                     .map((producto)=>(
                         <div className="producto-card" key={producto.id}>

@@ -1,3 +1,5 @@
+import Slider from "../components/Slider";
+
 function Home(){
     return(
         <div>
@@ -15,6 +17,7 @@ function Home(){
                 <img src="public/img/zapatos verdes2.png" alt="zapato-derecho" />
             </div>
         </section>
+        <Slider/>
         {/*productos destacados*/}
         <section className="destacados-section">
             <h2 className="section-title">Productos Destacados</h2>

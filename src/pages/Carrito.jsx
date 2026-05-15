@@ -1,4 +1,4 @@
-import { useContext, useState} from "react";
+import {useContext, useState} from "react";
 import {CarritoContext} from "../context/CarritoContext";
 
 function Carrito(){

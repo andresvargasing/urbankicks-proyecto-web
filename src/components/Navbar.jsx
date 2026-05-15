@@ -1,6 +1,9 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import {CarritoContext} from "../context/CarritoContext";
 
 function Navbar(){
+    const {carrito} = useContext(CarritoContext);
     return(
         <header>
         <nav className="navegacion section-content">
@@ -21,7 +24,7 @@ function Navbar(){
                     <Link to="/Contacto" className="nav-link" >Contacto</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/Carrito" className="nav-link" >Carrito</Link>
+                    <Link to="/Carrito" className="nav-link" >Carrito ({carrito.length})</Link>
                 </li>
                 <li className="nav-item">
                     <Link to="/PQR" className="nav-link" >PQR</Link>
