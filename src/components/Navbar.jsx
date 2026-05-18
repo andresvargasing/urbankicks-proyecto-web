@@ -29,6 +29,9 @@ function Navbar(){
                 <li className="nav-item">
                     <Link to="/PQR" className="nav-link" >PQR</Link>
                 </li>
+                <li className="nav-item">
+                    <Link to="/Equipo" className="nav-link" >Equipo</Link>
+                </li>
             </ul>
         </nav>
         </header>

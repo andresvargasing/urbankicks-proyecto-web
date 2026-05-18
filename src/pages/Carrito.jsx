@@ -2,8 +2,14 @@ import {useContext, useState} from "react";
 import {CarritoContext} from "../context/CarritoContext";
 
 function Carrito(){
-    const {carrito, eliminarDelCarrito} = useContext(CarritoContext);
+    const {carrito, eliminarDelCarrito, setCarrito} = useContext(CarritoContext);
     const [mostrarPago, setMostrarPago] = useState(false);
+
+    const [nombre, setNombre] = useState("");
+    const [tarjeta, setTarjeta] = useState("");
+    const [fecha, setFecha] = useState("");
+    const [cvv, setCvv] = useState("");
+
     //Total
     const total = carrito.reduce((acc,producto)=>{
         const precioNumero = Number(
@@ -15,6 +21,23 @@ function Carrito(){
         );
         return acc + precioNumero;
     }, 0);
+    //Pago Ficticio
+    const manejarPago = (e)=> {
+        e.preventDefault();
+        if(
+            nombre === "" ||
+            tarjeta.length < 16 ||
+            fecha === "" ||
+            cvv.length < 3
+        ){
+            alert("Completa correcamente los datos");
+            return;
+        }
+        alert("Pago realizado con Exito 🤑😎");
+        setCarrito([]);
+        setMostrarPago(false);
+    };
+
     return(
         <section className="carrito-section">
             <div className="section-content">
@@ -55,12 +78,12 @@ function Carrito(){
                 <div className="modal-pago">
                     <div className="modal-contenido">
                         <h2>Pasarela de Pago</h2>
-                        <form className="form-pago">
-                            <input type="text" placeholder="Nombre del titular" required/>
-                            <input type="text" placeholder="Numero de tarjeta" maxLength="16" required/>
+                        <form className="form-pago" onSubmit={manejarPago}>
+                            <input type="text" placeholder="Nombre del titular" value={nombre} onChange={(e)=> setNombre(e.target.value)} required/>
+                            <input type="text" placeholder="Numero de tarjeta" maxLength="16" value={tarjeta} onChange={(e)=> setTarjeta(e.target.value)} required/>
                             <div className="input-group">
-                                <input type="text" placeholder="MM/AA" required/>
-                                <input type="text" placeholder="CVV" maxLength="3" required/>
+                                <input type="text" placeholder="MM/AA" value={fecha} onChange={(e)=> setFecha(e.target.value)} required/>
+                                <input type="text" placeholder="CVV" maxLength="3" value={cvv} onChange={(e)=> setCvv(e.target.value)} required/>
                             </div>
                             <button type="submit" className="pagar-btn">Pagar Ahora</button>
                         </form>

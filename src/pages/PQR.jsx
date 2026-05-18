@@ -9,7 +9,6 @@ function PQR(){
 
     const manejarEnvio = (e) => {
         e.preventDefault();
-
         if(
             nombre === ""||
             correo === ""||

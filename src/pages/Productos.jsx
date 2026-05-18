@@ -26,27 +26,16 @@ function Productos() {
         "Mujer",
         "Niño"
     ];
-
-    useEffect(() => {
-
-        fetch("http://localhost:3000/productos")
-            .then((res) => res.json())
-            .then((data) => {
-
-                console.log("PRODUCTOS DESDE API:");
-                console.log(data);
-                console.log("CANTIDAD:", data.length);
-
-                setProductos(data);
-
-            })
-            .catch((err) => console.error(err));
-
-    }, []);
-
-    console.log("ESTADO PRODUCTOS:");
-    console.log(productos);
-    console.log("TOTAL EN ESTADO:", productos.length);
+    //Porductos Backend
+    useEffect(()=>{
+        fetch("http://localhost:4000/productos")
+        .then((res)=> res.json())
+        .then((data)=>{
+            console.log(data);
+            setProductos(data);
+        })
+        .catch((err)=>console.log(err));
+    },[]);
 
     return (
         <section className="productos-page">
@@ -164,7 +153,7 @@ function Productos() {
                             >
 
                                 <img
-                                    src={producto.imagen_url}
+                                    src={producto.imagen}
                                     alt={producto.nombre}
                                     className="producto-img"
                                 />

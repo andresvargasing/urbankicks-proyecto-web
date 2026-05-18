@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Accesibilidad from "./components/Accesibilidad";
+import Equipo from "./pages/Equipo";
 
 import Home from "./pages/Home";
 import Nosotros from "./pages/Nosotros";
@@ -24,6 +25,7 @@ function App(){
         <Route path="/Contacto" element={<Contacto/>} />
         <Route path="/Carrito" element={<Carrito/>} />
         <Route path="/PQR" element={<PQR/>} />
+        <Route path="/Equipo" element={<Equipo/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>

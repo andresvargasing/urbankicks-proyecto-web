@@ -27,7 +27,7 @@ function CarritoProvider({children}){
     return(
         <CarritoContext.Provider value={
             {
-                carrito,agregarAlCarrito,eliminarDelCarrito
+                carrito, setCarrito, agregarAlCarrito, eliminarDelCarrito
             }
         }>
             {children}

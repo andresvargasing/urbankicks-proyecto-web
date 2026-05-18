@@ -1,4 +1,26 @@
+import { useState } from "react";
+
 function Contacto(){
+    const [correo, setCorreo] = useState("");
+    const [telefono, setTelefono] = useState("");
+    const [error, setError] = useState("");
+
+    const manejarEnvio = (e)=> {
+        e.preventDefault();
+        const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const regexTelefono = /^3\d{9}$/;
+
+        if(!regexCorreo.test(correo)){
+            setError("Correo invalido..");
+            return;
+        }
+        if(!regexTelefono.test(telefono)){
+            setError("Telefono invalido..");
+            return;
+        }
+        setError("");
+        alert("Mensaje enviado con Exito 😁");
+    };
     return(
         <section className="contacto-page">
             <div className="section-content">
@@ -17,11 +39,20 @@ function Contacto(){
                         <div className="info-item">+57 300 123 4567</div>
                         <div className="info-item">urbankicks@gmail.com</div>
                     </div>
-                    <form className="contacto-form">
+                    <form className="contacto-form" onSubmit={manejarEnvio}>
                         <input type="text" placeholder="Nombre Completo" required />
-                        <input type="email" placeholder="Correo Electronico" required />
+
+                        <input type="text" placeholder="Telefono" value={telefono} onChange={(e)=> setTelefono(e.target.value)} />
+
+                        <input type="text" placeholder="Correo Electronico" value={correo} onChange={(e)=> setCorreo(e.target.value)} required />
+
                         <textarea type="text"placeholder="Mensaje" required />
-                        <button className="contacto-btn">Enviar Mensaje</button>
+                        <button type="submit" className="contacto-btn">Enviar Mensaje</button>
+                        {
+                            error && (
+                                <p className="error-msg">{error}</p>
+                            )
+                        }
                     </form>
                     <div className="mapa-container">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2812.1290274973567!2d-74.08472825268063!3d4.60279622169814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f990cf9320be3%3A0xf99eef6299cc64a7!2sPlaza%20Espa%C3%B1a!5e0!3m2!1ses!2sco!4v1778968834295!5m2!1ses!2sco" width="100%" height="350" style={{border:0}}  allowfullscreen="" loading="lazy"></iframe>

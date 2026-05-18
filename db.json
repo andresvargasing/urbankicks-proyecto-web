@@ -1,0 +1,25 @@
+{
+    "desarrolladores": [
+        {
+            "id":1,
+            "nombre":"Andres Vargas patiño",
+            "rol":"Frontend Developer",
+            "telefono":"3122220183",
+            "foto":""
+        },
+        {
+            "id":2,
+            "nombre":"Maria Paula",
+            "rol":"Backend Developer",
+            "telefono":"3006435152",
+            "foto":""
+        },
+        {
+            "id":3,
+            "nombre":"Nicolas Fernandez",
+            "rol":"Scrum Master",
+            "telefono":"3006435152",
+            "foto":""
+        }
+    ]
+}

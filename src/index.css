@@ -906,7 +906,53 @@ header .navegacion{
     height: 350px;
     border: none;
 }
-
+/*diseño p-Equipo*/
+.equipo-page{
+    padding: 50px 20px 100px;
+    min-height: 100vh;
+    background-color: var(--light-pink-color);
+}
+equipo-container{
+    display: grid;
+    grid-template-columns: repeat(3,fr);
+    gap: 30px;
+    margin-top: 50px;
+}
+.equipo-card{
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 35px 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+}
+.equipo-card:hover{
+    transform: translateY(-10px);
+}
+.equipo-img{
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 5px solid var(--secondary-color);
+}
+.equipo-card h3{
+    color: var(--primary-color);
+    font-size: var(--font-size-xl);
+    margin-bottom: 10px;
+}
+.equipo-card p{
+    color: var(--secondary-color);
+    font-size: var(--font-size-m);
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.equipo-card span{
+    color: var(--dark-color);
+    font-size: var(--font-size-n);
+}
 
 
 
@@ -990,6 +1036,9 @@ header .navegacion{
     .footer-content{
         grid-template-columns: repeat(2,1fr);
     }
+    .equipo-container{
+        grid-template-columns: repeat(2,1fr);
+    }
 }
 /*celular*/
 @media (max-width:640px){
@@ -1047,6 +1096,9 @@ header .navegacion{
         height: 45px;
         font-size: 0.9rem;
     }
+    .equipo-container{
+        grid-template-columns: repeat(1fr);
+    }
 
 }
 
@@ -1065,7 +1117,8 @@ header .navegacion{
 .dark-mode .contacto-page,
 .dark-mode .nosotros-section,
 .dark-mode .carrito-page,
-.dark-mode .pqr-section{
+.dark-mode .pqr-section,
+.dark-mode .equipo-page{
     background: #1b1b1b;
 }
 .dark-mode .p-card,
@@ -1074,7 +1127,8 @@ header .navegacion{
 .dark-mode .contacto-form,
 .dark-mode .carrito-card,
 .dark-mode .pqr-form,
-.dark-mode .modal-contenido{
+.dark-mode .modal-contenido,
+.dark-mode .equipo-card{
     background: #252525;
     color: var(--white-color);
 }
