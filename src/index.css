@@ -953,7 +953,36 @@ equipo-container{
     color: var(--dark-color);
     font-size: var(--font-size-n);
 }
-
+/*diseño agregar producto MySQL*/
+.form-producto{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 30px 0;
+    justify-content: center;
+}
+.form-producto input{
+    padding: 12px;
+    border: none;
+    border-left:2px solid var(--primary-color);
+    border-bottom:2px solid var(--primary-color);
+    outline: none;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+.form-producto button{
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    background: var(--dark-color);
+    color: var(--white-color);
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.form-producto button:hover{
+    background: yellow;
+    color: black;
+}
 
 
 

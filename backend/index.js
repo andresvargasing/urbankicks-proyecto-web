@@ -25,6 +25,7 @@ app.get("/", (req,res)=>{
     
     res.send("Servidor funcionando");
 });
+//Obtener productos de MySQL
 app.get("/productos",(req,res)=>{
     const sql = "select * from productos";
     conexion.query(sql,(error,resultados)=>{
@@ -37,15 +38,51 @@ app.get("/productos",(req,res)=>{
         res.json(resultados);
     });
 });
-app.post("/productos", (req, res)=>{
-    const nuevoProducto = req.body;
-    productos.push(nuevoProducto);
-    res.json({
-        mensaje:"Producto Agregado",
-        productos
+//elimiar producto MySQL
+app.delete("/productos/:id", (req,res)=>{
+    const id = req.params.id;
+    const sql = "delete from productos where id = ?";
+    conexion.query(sql,[id],(error,resultados)=>{
+        if(error){
+            console.log(error);
+            return res.status(500).json({
+                error:"Error eliminando producto"
+            });
+        }
+        res.json({
+            mensaje:"Producto eliminado 😎"
+        });
     });
 });
+//Agregar productos MySQL
+app.post("/productos", (req, res)=>{
+    const {
+        nombre, marca, categoria, precio, imagen}=req.body;
+    const sql = `insert into productos (nombre, marca, categoria, precio, imagen) values(?,?,?,?,?)`;
+    conexion.query(
+        sql,[
+            nombre, 
+            marca, 
+            categoria, 
+            precio, 
+            imagen
+        ],
+        (error,resultado)=>{
+            if(error){
+                console.log(error);
+                return res.status(500).json({
+                    error:"Error agregando producto"
+                });
+            }
+            res.json({
+                mensaje:"Producto agregado 😎"
+            });
+        }
+    );
+    });
 
+
+//confirma puerto del servidor
 app.listen(4000, ()=>{
     console.log("Servidor en puerto 4000");
 });

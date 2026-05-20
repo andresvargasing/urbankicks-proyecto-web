@@ -10,6 +10,12 @@ function Productos() {
     const [busqueda, setBusqueda] = useState("");
     const [productos, setProductos] = useState([]);
 
+    const [nuevoNombre, setNuevoNombre] = useState("");
+    const [nuevaMarca, setNuevaMarca] = useState("");
+    const [nuevaCategoria, setNuevaCategoria] = useState("");
+    const [nuevoPrecio, setNuevoPrecio] = useState("");
+    const [nuevaImagen, setNuevaImagen] = useState("");
+
     const marcas = [
         "Todos",
         "Nike",
@@ -26,7 +32,7 @@ function Productos() {
         "Mujer",
         "Niño"
     ];
-    //Porductos Backend
+    //Porductos Backend MySQL
     useEffect(()=>{
         fetch("http://localhost:4000/productos")
         .then((res)=> res.json())
@@ -36,6 +42,47 @@ function Productos() {
         })
         .catch((err)=>console.log(err));
     },[]);
+
+    //Funcion eliminar de MySQL
+    const eliminarProducto = async(id)=>{
+        try{
+            await fetch(`http://localhost:4000/productos/${id}`,{
+                method:"delete"
+            });
+            const nuevosProductos = productos.filter(
+                (producto)=> producto.id !== id
+            );
+            setProductos(nuevosProductos);
+        }catch(error){
+            console.log(error);
+        }
+    };
+    //Funcion Añadir de MySQL
+    const agregarProducto = async()=>{
+        const nuevoProducto = {
+            nombre:nuevoNombre,
+            marca:nuevaMarca,
+            categoria:nuevaCategoria,
+            precio:nuevoPrecio,
+            imagen:nuevaImagen
+        };
+        try{
+            await fetch("http://localhost:4000/productos", {
+                method:"post",
+                headers:{
+                    "content-Type":"application/json"
+                },
+                body:JSON.stringify(nuevoProducto)
+            });
+            const respuesta = await fetch(
+                "http://localhost:4000/productos"
+            );
+            const data = await respuesta.json();
+            setProductos(data);
+        }catch(error){
+            console.log(error);
+        }
+    };
 
     return (
         <section className="productos-page">
@@ -75,9 +122,7 @@ function Productos() {
                         >
                             {categoria}
                         </button>
-
                     ))}
-
                 </div>
 
                 <h3 className="filtro-titulo">
@@ -116,13 +161,19 @@ function Productos() {
 
                 </div>
 
+                {/* Formulario-añadir productos */}
+                <div className="form-producto">
+                    <input type="text" placeholder="Nombre" onChange={(e)=> setNuevoNombre(e.target.value)} />
+                    <input type="text" placeholder="Marca" onChange={(e)=> setNuevaMarca(e.target.value)} />
+                    <input type="text" placeholder="Categoria" onChange={(e)=> setNuevaCategoria(e.target.value)} />
+                    <input type="text" placeholder="Precio" onChange={(e)=> setNuevoPrecio(e.target.value)} />
+                    <input type="text" placeholder="Imagen" onChange={(e)=> setNuevaImagen(e.target.value)} />
+                    <button onClick={agregarProducto}>Agregar Producto</button>
+                </div>
                 {/* productos */}
                 <div className="productos-container">
-
                     {productos
-
                         .filter((producto) => {
-
                             const coincideMarca =
                                 filtroMarca === "Todos" ||
                                 producto.marca === filtroMarca;
@@ -137,49 +188,31 @@ function Productos() {
                                     .includes(
                                         busqueda.toLowerCase()
                                     );
-
                             return (
                                 coincideMarca &&
                                 coincideCategoria &&
                                 coincideBusqueda
                             );
                         })
-
                         .map((producto) => (
 
-                            <div
-                                className="producto-card"
-                                key={producto.id}
-                            >
-
-                                <img
-                                    src={producto.imagen}
-                                    alt={producto.nombre}
-                                    className="producto-img"
-                                />
-
+                            <div className="producto-card" key={producto.id}>
+                                <img src={producto.imagen} alt={producto.nombre} className="producto-img" />
                                 <h3 className="producto-name">
                                     {producto.nombre}
                                 </h3>
-
                                 <p className="producto-price">
                                     ${producto.precio}
                                 </p>
-
-                                <button
-                                    className="producto-btn"
-                                    onClick={() =>
-                                        agregarAlCarrito(producto)
-                                    }
-                                >
+                                <button className="producto-btn" onClick={() => agregarAlCarrito(producto)}>
                                     Agregar
                                 </button>
-
+                                <button className="producto-btn" onClick={()=> eliminarProducto(producto.id)}>
+                                    Eliminar
+                                </button>
                             </div>
-
                         ))
                     }
-
                 </div>
 
             </div>
