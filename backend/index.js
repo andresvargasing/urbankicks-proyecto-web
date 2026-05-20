@@ -81,6 +81,21 @@ app.post("/productos", (req, res)=>{
     );
     });
 
+//API Desarrolladores-Equipo de trabajo
+app.get("/desarrolladores", (req,res)=>{
+    const sql = "select * from desarrolladores";
+    conexion.query(sql,(error,resultados)=>{
+        if(error){
+            console.log(error);
+            return res.status(500).json({
+                error:"Error obtiniendo desarrolladores"
+            });
+        }
+        res.json(resultados);
+    });
+});
+
+
 
 //confirma puerto del servidor
 app.listen(4000, ()=>{

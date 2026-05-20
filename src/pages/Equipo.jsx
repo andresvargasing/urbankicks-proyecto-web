@@ -4,7 +4,7 @@ function Equipo(){
     const [desarrolladores, setDesarrolladores] = useState([]);
 
     useEffect(()=>{
-        fetch("http://localhost:3001/desarrolladores")
+        fetch("http://localhost:4000/desarrolladores")
         .then((response)=> response.json())
         .then((data)=> setDesarrolladores(data))
 

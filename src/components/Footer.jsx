@@ -27,9 +27,9 @@ function Footer(){
                 {/*politicas*/}
                 <div className="footer-politica">
                     <h3 className="title-footer">Informacion</h3>
-                    <a href="#">Politica de Privacidad</a>
-                    <a href="#">Tratamiento de Datos</a>
-                    <a href="#">Terminos y condiciones</a>
+                    <a href="/Privacidad">Politica de Privacidad</a>
+                    <a href="/DatosPersonales">Tratamiento de Datos</a>
+                    <a href="/Terminos">Terminos y condiciones</a>
                 </div>
             </div>
             <div className="footer-bottom">

@@ -12,6 +12,10 @@ import Contacto from "./pages/Contacto";
 import Carrito from "./pages/Carrito";
 import PQR from "./pages/PQR";
 
+import Privacidad from "./pages/Privacidad";
+import DatosPersonales from "./pages/DatosPersonales";
+import Terminos from "./pages/Terminos";
+
 function App(){
   return(
     <>
@@ -26,6 +30,10 @@ function App(){
         <Route path="/Carrito" element={<Carrito/>} />
         <Route path="/PQR" element={<PQR/>} />
         <Route path="/Equipo" element={<Equipo/>}/>
+        <Route path="/Privacidad" element={<Privacidad/>}/>
+        <Route path="/DatosPersonales" element={<DatosPersonales/>}/>
+        <Route path="/Terminos" element={<Terminos/>}/>
+
       </Routes>
       <Footer/>
     </BrowserRouter>

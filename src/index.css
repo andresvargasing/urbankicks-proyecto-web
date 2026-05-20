@@ -983,7 +983,31 @@ equipo-container{
     background: yellow;
     color: black;
 }
-
+/*Tratamiento de datos---*/
+.privacidad-page, .datos-page, .terminos-page{
+    padding: 80px 20px ;
+    background: var(--light-pink-color);
+}
+.privacidad-container, .datos-container, .terminos-container{
+    max-width: 1000px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    line-height: 1.9;
+}
+.privacidad-info h3, .datos-container h3, .terminos-container h3{
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: var(--dark-color);
+    font-size: 1.5rem;
+}
+.privacidad-info p, .datos-container p, .terminos-container hp{
+    color: var(--dark-color);
+    font-size: 1rem;
+    text-align: justify;
+}
 
 
 
